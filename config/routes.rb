@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'books/new'
+  get 'books/new' 
   get 'books/index'
+  post 'books'=> 'books#create'
   get 'books/show'
   get 'books/edit'
   get 'homes/top'
