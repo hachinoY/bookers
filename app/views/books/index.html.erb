@@ -10,3 +10,18 @@
   <%= link_to "edit" , "/books/edit" %>
   <%= link_to "destoroy" , method: :delete  %>
     <% end %>
+  <h1>New book</h1>
+<!--book（リスト）を持ってくる-->
+<%= form_with model: @book do |f| %>
+
+<h2>title</h2>
+<!----titleの記入-->
+<%= f.text_field :title %>
+
+<h2>body</h2>
+<!----bodyの記入-->
+<%= f.text_area:body %>
+<!--投稿ボタンの追加-->
+<%= f.submit "Create Book" %>
+
+<% end %>

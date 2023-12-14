@@ -1,8 +1,10 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
-<p> title: <%= list.title %> </p>
 
-<!--%= link_to "Edit" , book_path %>edit作ってから追加-->
+<p> title: <%= @book.title %> </p>
+
+<p> body: <%= @book.body %></p>
+
+<!--Editの追加-->
+<%= link_to "Edit" , edit_book_path(@book) %>
 |
 <!--backの追加-->
-<%= link_to "Back" , book_path %>
+<%= link_to "Back" , books_path %>
