@@ -6,17 +6,20 @@ class BooksController < ApplicationController
   end
 
   def index
+    #データを受け取る（全て）
     @books = Book.all
+    #データを入れる（箱）の作成
     @book = Book.new
   end
 
-   #book = @books.find(params[:id])
-    #@books.destroy
-    #respond_to do |book|
-     #wants.html { redirect_to(model_class_names_url) }
-      #wants.xml  { head :ok }
-    #end
-  #end 削除ぺージを後で追加
+  def destroy
+    #データを受け取る（一件）
+    book = Book.find(params[:id])
+    #データを削除
+    book.destroy
+    # 投稿一覧画面へリダイレクト
+    redirect_to books_path
+  end
 
   def show
     #詳細表示
@@ -24,6 +27,14 @@ class BooksController < ApplicationController
   end
 
   def edit
+    #編集画面へ移動
+    @book = Book.find(params[:id])
+  end
+
+  def update
+    book = Book.find(params[:id])
+    book.update(book_params)
+    redirect_to book_path(id:book.id)
   end
 
 private

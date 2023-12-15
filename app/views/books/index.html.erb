@@ -1,5 +1,5 @@
 <h1>Books</h1>
-
+<!--全部表示-->
 <% @books.each do |book| %>
 
   <p>title</p>
@@ -8,9 +8,10 @@
 
   <%= link_to "show" , "/books/show" %>
   <%= link_to "edit" , "/books/edit" %>
-  <%= link_to "destoroy" , method: :delete  %>
-    <% end %>
-  <h1>New book</h1>
+  <%= link_to "Destroy", book_path(book), method: :delete, data: { confirm: "Are you sure?" } %>
+<% end %>
+
+<h1>New book</h1>
 <!--book（リスト）を持ってくる-->
 <%= form_with model: @book do |f| %>
 
