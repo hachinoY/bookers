@@ -10,9 +10,9 @@ class BooksController < ApplicationController
       #show画面へリダイレクト
       redirect_to book_path(@book)
       else
+      @books = Book.all
       # フラッシュメッセージを定義し、index.html.erbを描画する
-      flash.now[:notice] = "投稿に失敗しました。"
-      render :new
+      render :index
       end
   end
 
@@ -46,11 +46,10 @@ class BooksController < ApplicationController
     #データを受け取る（一件）
     @book = Book.find(params[:id])
     #データを変更
-    @book.update(book_params)
     # 投稿一覧画面へリダイレクト*なぜidがこの表記になるのかわからない
-    if @book.save
+    if  @book.update(book_params)
     #フラッシュメッセージを表示させる
-    flash[:notice] = "Book was successfully created."
+    flash[:notice] = "Book was successfully updated."
     #show画面へリダイレクト
     redirect_to book_path(id: @book.id)
     else

@@ -1,10 +1,6 @@
-<div>
-  <%= flash[:notice] %>
-</div>
-
 <p> title: <%= @book.title %> </p>
 
-<p> body: <%= @book.body %></p>
+<p> body: <%= @book.body %> </p>
 
 <!--Editの追加-->
 <%= link_to "Edit" , edit_book_path(@book) %>
