@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-
+  
   def create
     #データを受け取り新規登録するためのインスタンス作成
     @book = Book.new(book_params)
@@ -10,8 +10,9 @@ class BooksController < ApplicationController
       #show画面へリダイレクト
       redirect_to book_path(@book)
       else
+      #データを受け取る（全て）
       @books = Book.all
-      # フラッシュメッセージを定義し、index.html.erbを描画する
+      # index.html.erbを描画する
       render :index
       end
   end
@@ -46,7 +47,7 @@ class BooksController < ApplicationController
     #データを受け取る（一件）
     @book = Book.find(params[:id])
     #データを変更
-    # 投稿一覧画面へリダイレクト*なぜidがこの表記になるのかわからない
+    # 投稿一覧画面へリダイレクト
     if  @book.update(book_params)
     #フラッシュメッセージを表示させる
     flash[:notice] = "Book was successfully updated."

@@ -1,3 +1,7 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
 <h1>Books</h1>
   <table>
   <tr>
@@ -27,11 +31,10 @@
 <!--エラーメッセージの表示-->
   <% if @book.errors.any? %>
     <%= @book.errors.count %>errors prohibited this book from being saved:
-    <ul>
-
-      <% @book.errors.full_messages.each do |message| %>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
-      <% end %>
+    <% end %>
   </ul>
   <% end %>
 
